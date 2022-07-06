@@ -17,7 +17,7 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->enum('status', ['uncompleted', 'completed'])->default('uncompleted');
             $table->timestamps();
         });

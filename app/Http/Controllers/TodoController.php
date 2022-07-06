@@ -30,6 +30,20 @@ class TodoController extends Controller
         return back();
     }
 
+    public function edit(Todo $todo)
+    {
+        return view('todo.edit', compact('todo'));
+    }
+
+    public function update(StoreTodoRequest $request, Todo $todo)
+    {
+        $data = $request->validated();
+        $model = $todo->fill($data);
+
+        $model->save();
+        return redirect()->route('todo');
+    }
+
     public function changeStatus($id)
     {
         $todos = Todo::findOrFail($id);

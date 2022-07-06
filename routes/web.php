@@ -27,6 +27,8 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/todo', [TodoController::class, 'index'])->name('todo');
     Route::post('/todo/store', [TodoController::class, 'store'])->name('todo.store');
+    Route::get('/todo/{todo}/edit', [TodoController::class, 'edit'])->name('todo.edit');
+    Route::put('/todo/{todo}', [TodoController::class, 'update'])->name('todo.update');
     Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
 
     Route::put('/todo/{todo}/changeStatus', [TodoController::class, 'changeStatus'])->name('todo.changeStatus');

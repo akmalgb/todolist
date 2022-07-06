@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-header">
                         Task List
                     </div>
@@ -18,6 +18,12 @@
                                         <div class="ms-2 me-auto">
                                             <div class="fw-bold">{{ $key + 1 }}. {{ $uncomplete->title }}</div>
                                             {{ $uncomplete->description }}
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('todo.edit', $uncomplete->id) }}"
+                                                class="btn btn-sm btn-info">
+                                                Edit
+                                            </a>
                                         </div>
                                         <form action="{{ route('todo.changeStatus', $uncomplete->id) }}" method="post" class="mx-2">
                                             @method('put')
@@ -50,6 +56,12 @@
                                             <div class="fw-bold">{{ $key + 1 }}. {{ $complete->title }}</div>
                                             {{ $complete->description }}
                                         </div>
+                                        <div>
+                                            <a href="{{ route('todo.edit', $complete->id) }}"
+                                                class="btn btn-sm btn-info">
+                                                Edit
+                                            </a>
+                                        </div>
                                         <form action="{{ route('todo.changeStatus', $complete->id) }}" method="post" class="mx-2">
                                             @method('put')
                                             @csrf
@@ -60,7 +72,6 @@
                                                 </button>
                                             </div>
                                         </form>
-
                                         <form action="{{ route('todo.destroy', $complete->id) }}" method="post">
                                             @method('delete')
                                             @csrf

@@ -16,7 +16,6 @@ class TodoController extends Controller
         $completedTodos = $user->Todos()->where('status', 'completed')->orderBy('updated_at', 'asc')->get();
         $uncompletedTodos = $user->Todos()->where('status', 'uncompleted')->orderBy('updated_at', 'asc')->get();
 
-        // dd($completedtodos);
         return view ('todo.index', compact('completedTodos', 'uncompletedTodos'));
     }
 

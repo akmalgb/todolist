@@ -53,7 +53,7 @@ class TodoController extends Controller
         }
 
         $todos->save();
-        return back(); //Redirect user somewhere
+        return back();
     }
 
     public function destroy(Todo $todo)
